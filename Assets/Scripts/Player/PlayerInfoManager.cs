@@ -1,29 +1,41 @@
 using System;
 using System.Collections;
+using JetBrains.Annotations;
 using Networking.Steam;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Player
 {
+    [RequireComponent(typeof(TextMeshPro))]
     public class PlayerInfoManager : MonoBehaviour
     {
         private string _nickname;
 
+        [Inject]
+        private PlayerManager _playerManager;
+
+        private TextMeshPro _nickMesh;
+
+
+
         private void Start()
         {
+            _nickMesh = transform.Find("Nickname").GetComponent<TextMeshPro>();
+             
             StartCoroutine(SetNicknameCoroutine());
         }
 
         private IEnumerator SetNicknameCoroutine()
         {
-            var isNicknameSet = false;
             while (true)
             {
+                bool isNicknameSet;
                 try
                 {
-                    _nickname = PlayerManager.Instance.GetPlayer(GetComponentInParent<PlayerSteamID>().SteamID).Name;
-                    transform.Find("Nickname").GetComponent<TextMeshPro>().text = _nickname;
+                    _nickname = _playerManager.GetPlayer(GetComponentInParent<PlayerSteamID>().SteamID).Name;
+                    _nickMesh.text = _nickname;
                     isNicknameSet = true;
                 }
                 catch (Exception e)

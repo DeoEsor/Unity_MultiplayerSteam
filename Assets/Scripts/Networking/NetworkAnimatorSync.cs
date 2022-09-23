@@ -1,3 +1,4 @@
+using System;
 using Player;
 using Unity.Netcode;
 using UnityEngine;
@@ -14,8 +15,7 @@ namespace Networking
         private int _freeFallAnimationHash;
 
         private int _groundAnimationHash;
-
-        //= new (false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner)
+        
         private readonly NetworkVariable<bool> _groundedAnimationBooleanNet = new(false,
             NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
@@ -42,8 +42,7 @@ namespace Networking
 
         private int _speedAnimationHash;
         private ThirdPersonController _thirdPersonController;
-
-        // Start is called before the first frame update
+        
         private void Start()
         {
             _thirdPersonController = GetComponent<ThirdPersonController>();
@@ -55,14 +54,11 @@ namespace Networking
             _jumpAnimationHash = Animator.StringToHash("Jump");
             _freeFallAnimationHash = Animator.StringToHash("FreeFall");
         }
-
-        // Update is called once per frame
+        
         private void Update()
         {
             if (!_networkObject.IsLocalPlayer)
                 UpdateAnimation();
-            //Debug.Log(_jumpAnimationBooleanNet.Value);
-            //_animator.SetBool(_jumpAnimationHash, true);
             else
                 GetFromController();
         }
@@ -88,13 +84,13 @@ namespace Networking
                 _oldGroundedAnimationBoolean = _thirdPersonController.GroundedAnimationForNet;
             }
 
-            if (_oldSpeedAnimationFloat != _thirdPersonController.SpeedAnimationFloatForNet)
+            if (Math.Abs(_oldSpeedAnimationFloat - _thirdPersonController.SpeedAnimationFloatForNet) > 0)
             {
                 _speedAnimationFloatNet.Value = _thirdPersonController.SpeedAnimationFloatForNet;
                 _oldSpeedAnimationFloat = _thirdPersonController.SpeedAnimationFloatForNet;
             }
 
-            if (_oldMotionSpeedAnimationFloat != _thirdPersonController.MotionSpeedAnimationFloatForNet)
+            if (Math.Abs(_oldMotionSpeedAnimationFloat - _thirdPersonController.MotionSpeedAnimationFloatForNet) > 0)
             {
                 _motionSpeedAnimationFloatNet.Value = _thirdPersonController.MotionSpeedAnimationFloatForNet;
                 _oldMotionSpeedAnimationFloat = _thirdPersonController.MotionSpeedAnimationFloatForNet;
