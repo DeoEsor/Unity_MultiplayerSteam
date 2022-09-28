@@ -58,11 +58,9 @@ namespace Player
             PlayersInitializing(lobby);
         }
 
-        private void OnLobbyMemberLeave(Lobby lobby, Friend player) 
-            => _players.Remove(player.Id);
+        private void OnLobbyMemberLeave(Lobby lobby, Friend player) => _players.Remove(player.Id);
 
-        private void OnLobbyMemberJoined(Lobby lobby, Friend player) 
-            => _players.Add(player.Id, player);
+        private void OnLobbyMemberJoined(Lobby lobby, Friend player) => _players.Add(player.Id, player);
 
         private void PlayersInitializing(Lobby lobby)
         {
