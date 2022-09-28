@@ -9,26 +9,28 @@ namespace AI
         private NavMeshAgent _aiAgent;
         private GameObject _player;
         public GameObject panelGaveOver;
+        private Animator _animator;
 
         public Transform[] wayPoints;
         public int currentPatch;
 
         public AIState aiEnemy;
 
-        void Start()
+        private void Start()
         {
+            _animator = gameObject.GetComponent<Animator>();
             _aiAgent = gameObject.GetComponent<NavMeshAgent>();
             _player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             switch (aiEnemy)
             {
                 case AIState.Patrol:
                 {
                     _aiAgent.isStopped = false;
-                    gameObject.GetComponent<Animator>().SetBool("Move", true);
+                    _animator.SetBool("Move", true);
                     
                     _aiAgent.SetDestination(wayPoints[currentPatch].transform.position);
                     
@@ -43,11 +45,11 @@ namespace AI
                     break;
                 }
                 case AIState.Stay:
-                    gameObject.GetComponent<Animator>().SetBool("Move", false);
+                    _animator.SetBool("Move", false);
                     _aiAgent.isStopped = true;
                     break;
                 case AIState.Chase:
-                    gameObject.GetComponent<Animator>().SetBool("Move", true);
+                    _animator.SetBool("Move", true);
                     _aiAgent.SetDestination(_player.transform.position);
                     break;
                 default:
