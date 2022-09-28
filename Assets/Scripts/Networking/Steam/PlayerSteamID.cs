@@ -11,7 +11,8 @@ namespace Networking.Steam
 
         private void Start()
         {
-            if (GetComponent<NetworkObject>().IsLocalPlayer) SetSteamIDServerRpc(SteamClient.SteamId.Value);
+            if (GetComponent<NetworkObject>().IsLocalPlayer)
+                SetSteamIDServerRpc(SteamClient.SteamId.Value);
         }
 
         [ServerRpc]
