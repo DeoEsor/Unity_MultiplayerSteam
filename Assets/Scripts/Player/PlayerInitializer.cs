@@ -8,7 +8,8 @@ namespace Player
 {
     public class PlayerInitializer : MonoBehaviour
     {
-        [FormerlySerializedAs("PlayerCameraRoot")] [SerializeField] private GameObject playerCameraRoot;
+        [FormerlySerializedAs("PlayerCameraRoot")] [SerializeField] 
+        private GameObject playerCameraRoot;
 
         private void Awake()
         {
