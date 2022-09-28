@@ -32,5 +32,7 @@ namespace Core
             if (PlayerLayerMasks.ContainsKey(playerId))
                 PlayerLayerMasks.Remove(playerId);
         }
+
+        public static LayerMask AllLayersWithoutThis(this LayerMask mine) => int.MaxValue ^ mine;
     }
 }
