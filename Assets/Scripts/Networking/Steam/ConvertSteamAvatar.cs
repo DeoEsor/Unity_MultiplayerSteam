@@ -8,14 +8,11 @@ namespace Networking.Steam
     {
         public static Texture2D Convert(this Image image)
         {
-            // Create a new Texture2D
             var avatar = new Texture2D((int)image.Width, (int)image.Height, TextureFormat.ARGB32, false)
              {
-                 // Set filter type, or else its really blury
                  filterMode = FilterMode.Trilinear
              };
-
-            // Flip image
+            
             for (var x = 0; x < image.Width; x++)
                 for (var y = 0; y < image.Height; y++)
                 {
