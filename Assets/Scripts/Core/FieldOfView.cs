@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using AI;
 using UnityEngine;
+using static UnityEngine.Physics;
 
 namespace Core
 {
     public class FieldOfView : MonoBehaviour
     {
-        public float radius;
-        [Range(0, 360)] public float angle;
+        public float radius = 5;
+        [Range(0, 360)] public float angle = 60 ;
 
         public GameObject playerRef;
 
@@ -17,7 +18,7 @@ namespace Core
 
         private void Start()
         {
-            playerRef = GameObject.FindGameObjectWithTag("Player");
+            // playerRef = GameObject.FindGameObjectWithTag("Player");
             StartCoroutine(FOVRoutine());
         }
 
@@ -31,14 +32,17 @@ namespace Core
                 FieldOfViewCheck();
             }
         }
+        
         private void FixedUpdate()
         {
-            gameObject.GetComponent<AIMonster>().aiEnemy = canSeePlayer ? AIMonster.AIState.Chase : AIMonster.AIState.Patrol;
+            gameObject.GetComponent<AIMonster>().aiEnemy = canSeePlayer 
+                ? AIMonster.AIState.Chase 
+                : AIMonster.AIState.Patrol;
         }
 
         private void FieldOfViewCheck()
         {
-            var rangeChecks = UnityEngine.Physics.OverlapSphere(transform.position, radius, targetMask); // don't use OverlapSphereNonAlloc method
+            var rangeChecks = OverlapSphere(transform.position, radius, targetMask); // don't use OverlapSphereNonAlloc method
 
             if (rangeChecks.Length != 0)
             {
@@ -49,7 +53,7 @@ namespace Core
                 {
                     var distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                    canSeePlayer = !UnityEngine.Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask);
+                    canSeePlayer = !Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask);
                 }
                 else
                     canSeePlayer = false;
