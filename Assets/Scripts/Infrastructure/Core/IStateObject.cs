@@ -2,6 +2,10 @@
 {
     public interface IStateObject
     {
-        IState State { get; set; }
+        IStateMachine CurrentState { get; set; }
+
+        void Initialize(IStateMachine startingState);
+
+        void ChangeState(IStateMachine newState);
     }
 }
