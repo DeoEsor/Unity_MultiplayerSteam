@@ -23,7 +23,6 @@ namespace Physics
             if (body == null || body.isKinematic) 
                 return;
 
-            
             var bodyLayerMask = 1 << body.gameObject.layer;
             
             if ((bodyLayerMask & pushLayers.value) == 0) 
