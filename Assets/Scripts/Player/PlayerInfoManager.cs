@@ -20,8 +20,6 @@ namespace Player
 
         private PlayerSteamID _playerSteamID;
 
-
-
         private void Start()
         {
             _nickMesh = transform.Find("Nickname").GetComponent<TextMeshPro>();
