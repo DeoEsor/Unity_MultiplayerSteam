@@ -25,7 +25,7 @@ namespace CustomEditors
                 return;
             
             Handles.color = Color.green;
-            Handles.DrawLine(fov.transform.position, fov.playerRef.transform.position);
+            Handles.DrawLine(fov.transform.position, fov.targetRef.transform.position);
         }
 
         private static Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)

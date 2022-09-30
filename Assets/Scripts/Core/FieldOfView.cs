@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using AI;
+using Infrastructure.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static UnityEngine.Physics;
 
 namespace Core
@@ -8,13 +10,17 @@ namespace Core
     public class FieldOfView : MonoBehaviour
     {
         public float radius = 5;
-        [Range(0, 360)] public float angle = 60 ;
-
-        public GameObject playerRef;
+        
+        [Range(60, 360)] 
+        public float angle = 60 ;
+        
+        public GameObject targetRef;
 
         public LayerMask targetMask;
         public LayerMask obstacleMask;
         public bool canSeePlayer;
+
+        private IStateObject StateObject { get; set; }
 
         private void Start()
         {
@@ -35,9 +41,7 @@ namespace Core
         
         private void FixedUpdate()
         {
-            gameObject.GetComponent<AIMonster>().aiEnemy = canSeePlayer 
-                ? AIMonster.AIState.Chase 
-                : AIMonster.AIState.Patrol;
+            StateObject.ChangeState((byte)(canSeePlayer ? AIMonster.AIState.Chase : AIMonster.AIState.Patrol)); 
         }
 
         private void FieldOfViewCheck()
