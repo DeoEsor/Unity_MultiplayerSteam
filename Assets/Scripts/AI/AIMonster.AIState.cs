@@ -2,7 +2,7 @@
 {
     public partial class AIMonster
     {
-        public enum AIState
+        public enum AIState : byte
         {
             Patrol, 
             Stay, 
