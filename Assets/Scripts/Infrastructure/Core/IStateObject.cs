@@ -7,5 +7,7 @@
         void Initialize(IStateMachine startingState);
 
         void ChangeState(IStateMachine newState);
+        
+        void ChangeState(byte newStateFlag);
     }
 }
