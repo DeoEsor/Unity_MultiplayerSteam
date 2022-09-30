@@ -50,6 +50,24 @@ namespace AI
             newState.Enter();
         }
 
+        public void ChangeState(byte newStateFlag)
+        {
+            switch ((AIState) newStateFlag)
+            {
+                case AIState.Patrol:
+                    ChangeState(new PatrolStateMachine());
+                    break;
+                case AIState.Stay:
+                    ChangeState(new PatrolStateMachine());
+                    break;
+                case AIState.Chase:
+                    ChangeState(new PatrolStateMachine());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public void ChangeState(AIState state)
         {
             switch (state)
