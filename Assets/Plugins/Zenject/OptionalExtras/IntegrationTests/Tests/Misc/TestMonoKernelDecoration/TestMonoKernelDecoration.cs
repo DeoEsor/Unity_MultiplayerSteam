@@ -5,7 +5,6 @@ using ModestTree.Util;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Zenject;
 using Zenject.Tests.TestAnimationStateBehaviourInject;
 
 namespace Zenject.Tests.Misc.TestMonoKernelDecoration
