@@ -1,11 +1,9 @@
 ﻿using System.Collections;
-using AI;
 using Infrastructure.Core;
 using UnityEngine;
-using UnityEngine.Serialization;
 using static UnityEngine.Physics;
 
-namespace Core
+namespace AI
 {
     public class FieldOfView : MonoBehaviour
     {
