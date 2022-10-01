@@ -7,15 +7,17 @@ namespace Environment
     {
         [SerializeField] private Animator mAnimator;
         [SerializeField] private bool isOpen;
-        private static readonly int IsOpen = Animator.StringToHash("isOpen");
+        [SerializeField] private string animationName = "isOpen";
+        private int _isOpen;
         
         [SerializeField] private string descriptionOnEnabled = "Press [E] to <color=green>open</color> the door.";
         [SerializeField] private string descriptionOnDisable = "Press [E] to <color=red>close</color> the door.";
 
         private void Start()
         {
+            _isOpen = Animator.StringToHash(animationName);
             if (isOpen)
-                mAnimator.SetBool(IsOpen, true);
+                mAnimator.SetBool(_isOpen, true);
         }
 
         public string GetDescription() 
@@ -24,7 +26,7 @@ namespace Environment
         public void Interact()
         {
             isOpen = !isOpen;
-            mAnimator.SetBool(IsOpen, isOpen);
+            mAnimator.SetBool(_isOpen, isOpen);
         }
     }
 }
