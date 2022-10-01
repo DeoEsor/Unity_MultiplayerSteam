@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Infrastructure.Player
+﻿namespace Infrastructure.Player
 {
     public interface IPlayer : IGetPosition
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Core
+namespace Core.Core
 {
     public abstract class StateMachineBase : MonoBehaviour, IStateMachine
     {

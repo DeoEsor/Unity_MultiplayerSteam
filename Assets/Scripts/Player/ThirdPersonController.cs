@@ -1,5 +1,4 @@
-﻿using InputSystem;
-using Networking;
+﻿using Networking;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;

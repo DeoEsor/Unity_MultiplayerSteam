@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Core;
 
-namespace Core
+namespace Core.Core
 {
     public class PlayerStateObject : IStateObject
     {

@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Core;
 using UnityEngine;
 
 namespace AI.StateMachines

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Infrastructure
+namespace Infrastructure.Networking
 {
     public interface INetworkPropertyChanged
     {

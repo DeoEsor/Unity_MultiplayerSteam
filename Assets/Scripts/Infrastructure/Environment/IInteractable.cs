@@ -1,9 +1,8 @@
-﻿using Infrastructure.Core;
-
-namespace Infrastructure.Environment
+﻿namespace Infrastructure.Environment
 {
     public interface IInteractable
     {
-        void Interactive<T>(IInteractive<T> interactable);
+        void Interact();
+        string GetDescription();
     }
 }

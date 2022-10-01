@@ -1,8 +1,6 @@
 ﻿using System;
-using Core;
-using Infrastructure.Core;
+using Core.Core;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace AI.StateMachines
 {

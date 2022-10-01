@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Steamworks;
-namespace Core
+using UnityEngine;
+
+namespace Core.Core
 {
     public static class LayerHelper
     {

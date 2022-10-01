@@ -1,13 +1,10 @@
 ﻿using Player;
 using Zenject;
 
-namespace Core
+public class ManagersInstaller : MonoInstaller<ManagersInstaller>
 {
-    public class ManagersInstaller : MonoInstaller<ManagersInstaller>
+    public override void InstallBindings()
     {
-        public override void InstallBindings()
-        {
-            Container.Bind<PlayerManager>().ToSelf().Lazy();
-        }
+        Container.Bind<PlayerManager>().ToSelf().Lazy();
     }
 }

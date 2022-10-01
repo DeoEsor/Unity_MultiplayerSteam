@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Steamworks;
 using Steamworks.Data;
-using Unity.Netcode;
 using UnityEngine;
 
 namespace Player

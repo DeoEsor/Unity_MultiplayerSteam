@@ -1,8 +1,6 @@
-﻿using Infrastructure;
-using Infrastructure.Player;
-using Zenject;
+﻿using Zenject;
 
-namespace Core
+namespace Player
 {
     public class PlayerInstaller : MonoInstaller<PlayerInstaller>
     {
